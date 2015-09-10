@@ -1,0 +1,24 @@
+<%= render 'shared/page_title', title: "All Programs" %>
+
+<% @programs.each do |program| %>
+  <div class="row">
+    <div class="col-md-2">
+      <section class="developer_info center">
+        <%= gravatar_for program.developer, size: 100 %>
+        <h5>Developer name: <%= program.developer.developername %></h5>
+      </section>  
+    </div>
+    
+    <div class="col-lg-8 well">
+      <h4><%= link_to program.name, program_path(program) %></h4>
+      <p><%= program.summary %></p>
+      <p>
+        <span class='quiet'><small><%= time_ago_in_words(program.created_at) %> ago</small></span>
+      </p>  
+    </div>  
+  </div>  
+  <hr/>
+<% end %>
+
+
+
