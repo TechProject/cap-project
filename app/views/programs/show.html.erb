@@ -7,9 +7,12 @@
       <h5>Code written by: <%= @program.developer.developername %></h5>
     </p>  
   </div>  
-  <div class="col-md-8">
+  <div class="col-md-8"> 
     <%= link_to "Edit this Program", edit_program_path(@program), class: "btn btn-success pull-right" %>
     <h3><%= @program.summary %></h3>
+    <div class="show_program">
+      <%= image_tag(@program.picture.url, class: "gravatar") if @program.picture? %>
+    </div>  
     <div class="well">
       <p>
         <strong>Permissions:</strong>
