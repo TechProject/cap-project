@@ -1,5 +1,7 @@
 <%= render 'shared/page_title', title: "All Programs" %>
 
+<%= will_paginate %>
+
 <% @programs.each do |program| %>
   <div class="row">
     <div class="col-md-2">
@@ -13,8 +15,17 @@
       <h4><%= link_to program.name, program_path(program) %></h4>
       <p><%= program.summary %></p>
       <p>
-        <span class='quiet'><small><%= time_ago_in_words(program.created_at) %> ago</small></span>
+        <span class='quiet'><small> <strong>Created</strong>: <%= time_ago_in_words(program.created_at) %> ago, </small></span>
+        <span class='quiet'><small> <strong>Updated</strong>: <%= time_ago_in_words(program.updated_at) %> ago</small></span>
       </p>  
+      <div class="pull-right">
+        <%= link_to like_program_path(program, like: true), method: :post do %>
+          <i class="glyphicon glyphicon-thumbs-up"></i> &nbsp <%= program.thumbs_up_total %>
+        <% end %> &nbsp&nbsp&nbsp&nbsp
+        <%= link_to like_program_path(program, like: false), method: :post do %>
+          <i class="glyphicon glyphicon-thumbs-down"></i> &nbsp <%= program.thumbs_down_total %>
+        <% end %>
+      </div>
     </div>  
     <div class="col-md-4">
       <%= image_tag(program.picture.url, size: "250x150", class: "gravatar") if program.picture? %>
@@ -22,6 +33,8 @@
   </div>  
   <hr/>
 <% end %>
+
+<%= will_paginate %>
 
 
 

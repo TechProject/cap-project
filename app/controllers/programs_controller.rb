@@ -1,6 +1,6 @@
 class ProgramsController < ApplicationController
   def index
-    @programs = Program.all
+    @programs = Program.paginate(page: params[:page], per_page: 4)
   end
   
   def show
@@ -35,6 +35,18 @@ class ProgramsController < ApplicationController
     else
       render :edit
     end  
+  end
+  
+  def like
+    @program = Program.find(params[:id])
+    like = Like.create(like: params[:like], developer: Developer.first, program: @program)
+    if like.valid?
+      flash[:success] = "Your selection was successfull."
+      redirect_to :back
+    else
+      flash[:danger] = "You can only like/dislike a program once."
+      redirect_to :back
+    end
   end
   
   private

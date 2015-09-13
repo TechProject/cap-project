@@ -18,6 +18,14 @@
         <strong>Permissions:</strong>
       </p>  
       <%= simple_format(@program.description) %>
+      <div class="pull-right">
+        <%= link_to like_program_path(@program, like: true), method: :post do %>
+          <i class="glyphicon glyphicon-thumbs-up"></i> &nbsp <%= @program.thumbs_up_total %>
+        <% end %> &nbsp&nbsp&nbsp&nbsp
+        <%= link_to like_program_path(@program, like: false), method: :post do %>
+          <i class="glyphicon glyphicon-thumbs-down"></i> &nbsp <%= @program.thumbs_down_total %>
+        <% end %>
+      </div> 
     </div>  
   </div>  
 </div>  

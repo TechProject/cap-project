@@ -1,5 +1,6 @@
 class Developer < ActiveRecord::Base
   has_many :programs
+  has_many :likes
   before_save { self.email = email.downcase}
   validates :developername, presence: true, length: { minimum: 3, maximum: 40 }
   VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i

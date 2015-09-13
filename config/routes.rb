@@ -4,7 +4,11 @@ Rails.application.routes.draw do
   
   get '/home', to: 'pages#home'
   
-  resources :programs
+  resources :programs do  
+    member do  
+      post 'like'
+    end
+  end
 
   
 end
