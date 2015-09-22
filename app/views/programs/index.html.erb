@@ -1,5 +1,14 @@
 <%= render 'shared/page_title', title: "All Programs" %>
 
+<ul class="nav nav-tabs">
+  <li class='active'>
+    <%= link_to "Programs", programs_path %>
+  </li>  
+  <li>
+    <%= link_to "Developers", developers_path %>
+  </li>  
+</ul>
+
 <%= will_paginate %>
 
 <% @programs.each do |program| %>
