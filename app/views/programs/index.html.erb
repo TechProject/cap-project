@@ -6,7 +6,7 @@
   <div class="row">
     <div class="col-md-2">
       <section class="developer_info center">
-        <%= gravatar_for program.developer, size: 100 %>
+        <%= link_to gravatar_for(program.developer, size: 100), developer_path(program.developer) %>
         <h5>Developer name: <%= program.developer.developername %></h5>
       </section>  
     </div>

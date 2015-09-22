@@ -1,0 +1,36 @@
+<%= render 'shared/page_title', title: "Developer: " + @developer.developername %>
+
+<div class="row">
+  <div class="col-md-4 col-md-offset-4 center">
+    <%= gravatar_for @developer, size: 200 %>
+    <hr/>
+  </div>
+</div>  
+
+<div class="row">
+  <div class="col-md-4 col-md-offset-4 center">
+    <h3><em>Programs:</em></h3>
+    <%= will_paginate @programs %>
+  </div>
+</div>  
+
+<% @programs.each do |program| %>
+  <div class="row">
+    <div class="col-lg-6 well col-lg-offset-3">
+      <h4><%= link_to program.name, program_path(program) %></h4>
+      <p><%= program.summary %></p>
+      <p>
+        <span class='quiet'><small> <strong>Created</strong>: <%= time_ago_in_words(program.created_at) %> ago, </small></span>
+        <span class='quiet'><small> <strong>Updated</strong>: <%= time_ago_in_words(program.updated_at) %> ago</small></span>
+      </p>  
+      <div class="pull-right">
+        <%= link_to like_program_path(program, like: true), method: :post do %>
+          <i class="glyphicon glyphicon-thumbs-up"></i> &nbsp <%= program.thumbs_up_total %>
+        <% end %> &nbsp&nbsp&nbsp&nbsp
+        <%= link_to like_program_path(program, like: false), method: :post do %>
+          <i class="glyphicon glyphicon-thumbs-down"></i> &nbsp <%= program.thumbs_down_total %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+<% end %>

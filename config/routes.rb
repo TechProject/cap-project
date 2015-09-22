@@ -9,6 +9,18 @@ Rails.application.routes.draw do
       post 'like'
     end
   end
+  
+  resources :developers, except: [:new] 
+  
+  get '/register', to: 'developers#new'
+  
+  get '/login', to: "logins#new"
+  post '/login', to: "logins#create"  
+  get '/logout', to: "logins#destroy"
+  
+  
+  
+  
 
   
 end

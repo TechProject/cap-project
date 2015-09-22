@@ -2,13 +2,15 @@
 
 <div class="row">
   <div class="col-md-4 pull-right center">
-    <%= gravatar_for @program.developer, size: 200 %>
+    <%= link_to gravatar_for(@program.developer, size: 200), developer_path(@program.developer) %>
     <p>
       <h5>Code written by: <%= @program.developer.developername %></h5>
     </p>  
   </div>  
   <div class="col-md-8"> 
-    <%= link_to "Edit this Program", edit_program_path(@program), class: "btn btn-success pull-right" %>
+    <% if logged_in? and @program.developer == current_user  %>
+      <%= link_to "Edit this Program", edit_program_path(@program), class: "btn btn-success pull-right" %>
+    <% end %>
     <h3><%= @program.summary %></h3>
     <div class="show_program">
       <%= image_tag(@program.picture.url, class: "gravatar") if @program.picture? %>

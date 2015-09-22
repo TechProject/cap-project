@@ -20,3 +20,19 @@ email: string
 - email must be present
 - email must be unique (since we'll use this for logins later)
 - email must be valid
+
+Developers:
+
+What we have already done:
+- Developer model and validations
+- Developers table with columns developername and email
+
+What we need to do:
+- Add passwords to the developers table to developers can be authenticated and logged in
+- use email as log in credentials, since email is unique
+- Ability to register new developers to use the app
+- Ability to display developers profile
+- Ability to list developers using the app
+- Ability for developers to log in and log out of the app
+- Restrict action like create program, edit program and like feature to logged in developers only
+- Restricting edit of programs by developers who created the programs
